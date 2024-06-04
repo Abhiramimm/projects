@@ -1,0 +1,123 @@
+class Movie(models.Model):
+
+    title=models.CharField(max_length=200)
+
+    year=models.CharField(max_length=200)
+
+    director=models.CharField(max_length=200)
+
+    run_time=models.PositiveIntegerField()
+
+    language=models.CharField(max_length=200)
+
+    genre=models.CharField(max_length=200)
+    
+
+from myapp.models import Movie
+
+orm query for creating object
+>>> Movie.objects.create(title="hridayam",year="2022",director="vineeth",run_time=250,language="malayalam",genre="romantic")
+
+orm query for list all movies
+>>> Movie.objects.all()
+
+orm query for fetching a specific movie details
+>>> qs=Movie.objects.get(id=3)
+qs
+qs.title
+
+orm query for filtering malayalam movie object whose genre="comedy"
+>>> qs=Movie.objects.filter(language="malayalam",genre="comedy")
+
+fetch movie, release after 2023
+>>> qs=Movie.objects.filter(year__gt=2023)
+
+fetch movie, release after 2023 ???????????????????
+
+filter all movies whose genre="Action"
+__iexact
+>>> qs=Movie.objects.filter(genre__iexact="Action")
+
+__icontains
+>>> qs=Movie.objects.filter(title__icontains="Ma")
+qs
+
+filter all movies whose genre "action" | "drama"
+>>> qs=Movie.objects.filter(genre__in=["action","drama"])
+
+update orm query
+>>> Movie.objects.filter(id=2).update(language="malayalam")
+
+delete orm query
+delete movie with id=6
+>>> Movie.objects.filter(id=6).delete()
+
+*************************************************************
+fetch all genres
+
+>>modelname.objects.values('column')
+>>qs=Movie.object.values('genre)
+
+
+list-->__list
+
+>>Movie.objects.values_list('genre',flat=True)
+
+
+unique-->distinct()
+
+>>Movie.objects.values_list('gernre',flat=True).distinct()
+
+
+sorting
+
+>>qs=Movie.objects.all().order_by("run_time")  #asc
+
+>>qs=Movie.objects.all().order_by("-run_time")  #desc
+
+
+
+max
+
+>>qs=qs=Movie.objects.all().order_by("-run_time").first()
+>>qs=Movie.objects.all().order_by("-run_time")[0:3]
+
+
+
+aggragate orm query
+
+Max,Min,Sum,Count,Avg
+
+>>from django.db.models import Max
+>>qs=Movie.objects.aggregate(Max('run_time'))
+
+fetch all movie with longest run time
+>>> from django.db.models import Max,Min
+>>> qs=Movie.objects.values("run_time").aggregate(longest=Max("run_time"))
+>>> qs
+>>> data=Movie.objects.filter(run_time=qs.get("longest"))
+>>> data
+
+fetch all movie with shortest run time
+>>> from django.db.models import Max,Min
+>>> qs=Movie.objects.values("run_time").aggregate(shortest=Min("run_time"))
+>>> data=Movie.objects.filter(run_time=qs.get("shortest"))
+
+group movies with genre
+>>> from django.db.models import Max,Min,Count
+>>> qs=Movie.objects.values("genre").annotate(summary=Count("genre"))
+
+comedy movie Count
+
+
+language wise movie Count
+>>> from django.db.models import Count
+>>> qs=Movie.objects.values("language").annotate(summary=Count("language"))
+
+
+
+
+
+
+
+

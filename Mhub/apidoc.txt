@@ -1,0 +1,163 @@
+Schema:Movie
+
+attributes:title,year,director,runtime,language,genre,producer
+
+API 1) api for listing all movies
+
+    url:localhost:8000/api/movies/
+
+    method:GET
+
+    body:nill
+
+    status:pending
+
+
+API 2) api for creating a movie
+
+    url:localhost:8000/api/movies/
+
+    method:POST
+
+    body:{
+
+    "title":"aavesham",
+     "year":"2024",
+    "director":"jithu",
+     "runtime":120,
+     "language":"malayalam",
+     "genre":"action",
+     "producer":"fahad fasil"
+}
+
+    status:pending
+
+API 3) api for fetching a specific movie
+
+    url:localhost:8000/api/movies/{id}/
+
+    method:GET
+
+    body:nill
+
+    status:pending
+
+API 4) api for updating a specific movie
+
+    url:localhost:8000/api/movies/{id}/
+
+    method:PUT
+
+    body: {
+
+    "title":"aavesham",
+     "year":"2024",
+    "director":"jithu",
+     "runtime":120,
+     "language":"malayalam",
+     "genre":"action",
+     "producer":"fahad fasil"
+}
+
+    status:pending
+
+API 5) api for deleting a specific movie
+
+    url:localhost:8000/api/movies/{id}/
+
+    method:DELETE
+
+    body:nill
+
+    status:pending
+
+API 6) API for listing all languages
+
+    url:url:localhost:8000/api/movies/languages/
+
+    method:GET
+
+    body:nill
+
+*************************************************************************************
+
+
+Shema:Actor
+attributes=name,age,gender,picture
+
+API 1) API for listing all Actor
+
+    url:localhost:8000/api/actors/
+
+    method:GET
+
+    body:nill
+
+    status:pending
+
+API 2) API for adding actors
+
+    url:localhost:8000/api/actors/
+
+    method:POST
+
+    body:{
+        "name":"dq",
+        "age":34,
+        "picture":pic.jpg",
+        "gender":"male"
+    }
+
+    status:pending
+
+API 3) API for getting actor details
+
+    url:localhost:8000/api/actors/{id}/
+
+    method:GET
+
+    body:nill
+
+    status:pending
+
+API 4) API for updating actor details
+
+    url:localhost:8000/api/actors/{id}/
+
+    method:PUT
+
+      body:{
+        "name":"dq",
+        "age":34,
+        "picture":pic.jpg",
+        "gender":"male"
+    }
+
+    status:pending
+
+API 5) API for deleting actor
+
+    url:localhost:8000/api/actors/{id}/
+   
+    method:DELETE
+
+    body:nill
+
+    status:pending
+
+
+============ Review ===============
+
+Schema:Review
+attributes:id,comment,rating,user,created_date
+
+API 1) api for adding a review
+
+    url:localhost:8000/api/albums/{id}/add_review/
+
+    method:POST
+
+    body:{comment,rating,user}
+
+
+
