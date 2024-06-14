@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block main_block %}
+<div class="container border shadow mt-5 p-4">
+    <h1 class="mb-3">Update Student</h1>
+    <form action="" method="post">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit">Update</button>
+    </form>
+</div>
+
+{%endblock%}

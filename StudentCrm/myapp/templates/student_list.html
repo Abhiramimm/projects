@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block main_block %}
+
+    <div class="container mt-5 border shadow p-5">
+        <h2 class="text-center mb-4"><strong>All Students</strong></h2>
+        <table class="table">
+            <th>Name</th>
+            <th>Course</th>
+            <th>Batch</th>
+            <th>Duration</th>
+            <th>PhoneNo</th>
+            <th>Action</th>
+        
+                {%for s in data%}
+                <tr>
+                <td>{{s.name}}</td>
+                <td>{{s.course}}</td>
+                <td>{{s.batch}}</td>
+                <td>{{s.duration}}</td>
+                <td>{{s.phone_no}}</td>
+                <td>
+                    <a href="{% url 'student-detail' s.id %}" class="btn btn-outline-info">View</a>
+                    <a href="{% url 'student-delete' s.id %}" class="btn btn-outline-danger">Delete</a>
+                    <a href="{% url 'student-edit' s.id %}" class="btn btn-outline-warning">Edit</a>
+                </td>
+                </tr>
+                {%endfor%}
+            
+        </table>
+    </div>
+
+
+
+
+
+{%endblock%}

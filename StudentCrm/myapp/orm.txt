@@ -1,0 +1,27 @@
+class Student(models.Model):
+
+    name=models.CharField(max_length=200)
+
+    course=models.CharField(max_length=200)
+
+    batch=models.TimeField()
+
+    duration=models.PositiveIntegerField()
+
+    phone_no=models.PositiveIntegerField()
+
+
+from myapp.models import Student
+
+* orm query for create a new student object
+>>> Student.objects.create(name="john",course="python",batch=1,duration=6,phone_no=1234567890)
+
+* orm query for fetching all student object
+>>> qs=Student.objects.all()
+
+* orm query for fetching a specific object
+>>> qs=Student.objects.get(id=2)
+
+* orm query for fetching student object whose course="python"
+>>> qs=Student.objects.get(course="python")
+
