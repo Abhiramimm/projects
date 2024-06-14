@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{%block title_block%}
+<title>Employee-Detail</title>
+{%endblock%}
+{% block main_block %}
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        Name: {{data.name}}
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Department: {{data.department}}</li>
+        <li class="list-group-item">Salary: {{data.salary}}</li>
+        <li class="list-group-item">Location: {{data.location}}</li>
+        <li class="list-group-item">Email: {{data.email}}</li>
+        <li class="list-group-item">Address: {{data.address}}</li>
+        <li class="list-group-item">DateofJoin: {{data.dateofjoin}}</li>
+      </ul>
+    </div>
+</div>
+{%endblock%}

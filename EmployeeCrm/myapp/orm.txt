@@ -1,0 +1,78 @@
+class Employee(models.Model):
+
+    name=models.CharField(max_length=200)
+
+    department=models.CharField(max_length=200)
+
+    salary=models.PositiveIntegerField()
+
+    location=models.CharField(max_length=200)
+
+    email=models.EmailField()
+
+    address=models.CharField(max_length=200)
+
+from myapp.models import Employee
+
+* orm query for creating a new Employee object
+>>> Employee.objects.create(name="jane doe",department="it",salary=25000,location="kochi",email="jane13@gmail.com",address="eranakulam")
+
+* orm query for fetching all employee object
+>>> qs=Employee.objects.all()
+
+* orm query for fetching a specific object
+>>> employee_obj=Employee.objects.get(id=2)
+
+* orm query for fecth employee object whose department="it"
+>>> qs=Employee.objects.filter(department="it")
+
+* orm query for fetch highest salary employee
+>>> qs=Employee.objects.filter(salary__gt=25000)
+
+* orm query for filter all employee whose department="It"
+>>> qs=Employee.objects.filter(department__iexact="IT")
+
+>>> qs=Employee.objects.filter(name__icontains="j")
+
+* update query
+>>> Employee.objects.filter(id=2).update(location="Trivandrum")
+
+* delete query
+>>> Employee.objects.filter(id=4).delete()
+
+????
+>>> qs=Employee.objects.values_list('location',flat=True)
+
+* ascending order
+>>> qs=Employee.objects.all().order_by('name')
+
+* descending order
+>>>qs=Employee.objects.all().order_by('-name')
+
+* highest salary
+>>> from django.db.models import Max,Min 
+>>> max_salary=Employee.objects.aggregate(Max('salary'))
+>>> max_salary
+
+* minimum salary
+>>> min_salary=Employee.objects.aggregate(Min('salary')) 
+>>> min_salary
+
+* filter  dept wise employee count
+>>> from django.db.models import Max,Min,Count
+>>> qs=Employee.objects.values("department").annotate(summary=Count("department"))
+
+* total no.of employees
+>>> from django.db.models import Max,Min,Count
+>>> qs=Employee.objects.aggregate(Count('id')) 
+
+* filter name of employee whose salary is highest
+>>> from django.db.models import Max,Min
+>>> qs=Employee.objects.values("salary").aggregate(highest=Max("salary"))
+>>> qs
+>>> data=Employee.objects.filter(salary=qs.get("highest"))
+>>> data
+
+
+
+

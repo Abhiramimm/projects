@@ -1,0 +1,78 @@
+Schema:Employee
+
+attributes:name,department,salary,location,email,address,dateofjoin
+
+API 1) api for listing all employees
+
+url:localhost:8000/api/employees/
+
+method:GET
+
+body:nill
+
+status:pending
+
+API 2) api for creating employee
+
+url:localhost:8000/api/employees/
+
+method:POST
+
+body:{
+    "name":"jane",
+    "department":"it",
+    "salary":20000,
+    "location":"kochi",
+    "email":"jane@gmail.com",
+    "address":"eranakulam",
+    "dateofjoin":"01/01/2023"
+}
+
+status:pending
+
+API 3) api for fetching specific employee details
+
+url:localhost:8000/api/employees/{id}/
+
+method:GET
+
+body:nill
+
+status:pending
+
+API 4) api for updating a specific employee details
+
+url:localhost:8000/api/employees/{id}
+
+method:PUT
+
+body:{
+    "name":"jane",
+    "department":"it",
+    "salary":20000,
+    "location":"kochi",
+    "email":"jane@gmail.com",
+    "address":"eranakulam",
+    "dateofjoin":"01/01/2023"
+}
+
+status:pending
+
+
+API 5) api for deleting employee
+
+url:localhost:8000/api/employees/{id}
+
+method:DELETE
+
+body:nill
+
+status:pending
+
+6) API for listing all department
+
+url:url:localhost:8000/api/employees/departments/
+
+method:GET
+
+body:nill

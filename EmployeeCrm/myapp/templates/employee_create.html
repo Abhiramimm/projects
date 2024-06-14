@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{%block title_block%}
+<title>Add-Employee</title>
+{%endblock%}
+
+{% block main_block %}
+<div class="container p-4 mt-5 border shadow">
+    <h2 class="mb-3 fw-bold text-center">Add Employee</h2>
+    <form action="" method="post">
+        {%csrf_token%}
+       <!--{{form.as_p}}-->
+       <div class="row">
+        <div class="col-6">
+            <label for="">Name</label>
+            {{form.name}}
+        </div>
+        <div class="col-6">
+            <label for="">Department</label>
+            {{form.department}}
+        </div>
+       </div>
+       <div class="row">
+        <div class="col-6">
+            <label for="">Salary</label>
+            {{form.salary}}
+        </div>
+        <div class="col-6">
+            <label for="">Location</label>
+            {{form.location}}
+        </div>
+       </div>
+       <div class="row">
+        <div class="col-6">
+            <label for="">Email</label>
+            {{form.email}}
+        </div>
+        <div class="col-6">
+            <label for="">Address</label>
+            {{form.address}}
+        </div>
+       </div>
+       <div class="row">
+        <div class="col-12">
+            <label for="">DateofJoin</label>
+            {{form.dateofjoin}}
+        </div>
+       </div>
+        <button type="submit">Add Employee</button>
+    </form>
+
+</div>
+{%endblock%}

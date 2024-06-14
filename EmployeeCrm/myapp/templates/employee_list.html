@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+{%block title_block%}
+<title>Employee-List</title>
+{%endblock%}
+{% block main_block%}
+<div class="container p-4 border shadow mt-5">
+    <h2 class="text-center mb-4"><strong>All Employees</strong></h2>
+    <a href="{% url 'employee-create' %}" class="btn btn-success">AddNewEmployee</a>
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Salary</th>
+            <th>Location</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>DateofJoin</th>
+            <th>Action</th>
+        </tr>
+        {%for e in data%}
+        <tr>
+            <td>{{e.name}}</td>
+            <td>{{e.department}}</td>
+            <td>{{e.salary}}</td>
+            <td>{{e.location}}</td>
+            <td>{{e.email}}</td>
+            <td>{{e.address}}</td>
+            <td>{{e.dateofjoin}}</td>
+            <td>
+                <a href="{% url 'employee-detail' e.id %}" class="btn btn-outline-info">View</a>
+                <a href="{% url 'employee-delete' e.id%}" class="btn btn-outline-danger">Delete</a>
+                <a href="{% url 'employee-edit' e.id %}" class="btn btn-outline-warning">Edit</a>
+            </td>
+        </tr>
+        {%endfor%}
+    </table>
+</div>
+{% endblock %}
